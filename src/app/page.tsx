@@ -50,13 +50,18 @@ export default function BlogSummarizer() {
     <main className={`${theme === 'dark' ? 'dark' : ''}`}>
       <div className="relative min-h-screen bg-white text-black dark:bg-[#0D0D0D] dark:text-white flex items-center justify-center px-4 py-10 overflow-hidden transition-colors">
         <div className="absolute top-4 right-4">
-          <Button
+                 <Button
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="rounded-full cursor-pointer"
+            className="rounded-full border border-neutral-300 dark:border-neutral-700 shadow-sm hover:shadow-md transition-colors duration-300 bg-white/80 dark:bg-white/10 hover:bg-white/90 dark:hover:bg-white/20 backdrop-blur-sm cursor-pointer"
+            aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            {theme === 'dark' ? (
+              <Sun className="h-5 w-5 text-yellow-400" />
+            ) : (
+              <Moon className="h-5 w-5 text-indigo-500" />
+            )}
           </Button>
         </div>
 
