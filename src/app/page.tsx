@@ -12,7 +12,7 @@ export default function ChatlyHome() {
   const [error, setError] = useState('');
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
-  const MIN_LENGTH = 100;
+  const MIN_LENGTH = 1;
   const isURL = input.trim().startsWith('http://') || input.trim().startsWith('https://');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -40,7 +40,7 @@ export default function ChatlyHome() {
 
   return (
     <main className={`${theme === 'dark' ? 'dark' : ''}`}>
-      <div className="relative min-h-screen bg-white text-black dark:bg-[#0D0D0D] dark:text-white flex items-center justify-center px-4 py-10 transition-colors">
+      <div className="relative min-h-screen bg-white text-black dark:bg-[#0D0D0D] dark:text-white flex items-center justify-center px-4 py-10 transition-all duration-500 ease-in-out">
         {/* Theme Toggle */}
         <div className="absolute top-4 right-4">
           <Button
@@ -64,10 +64,10 @@ export default function ChatlyHome() {
           </h1>
           <p className="text-lg text-neutral-500 dark:text-neutral-400">Your AI assistant for quick answers and blog summaries.</p>
 
-          {/* Glowing Gradient Form */}
+          {/* Chatbox Form */}
           <form
             onSubmit={handleSubmit}
-            className="glow-box flex flex-col gap-4 bg-gradient-to-br from-[#06b6d4] via-[#3b82f6] to-[#6366f1] p-6 rounded-2xl border border-blue-400 relative z-10 backdrop-blur-md"
+            className="glow-box flex flex-col gap-4 bg-gradient-to-br from-[#0ea5e9] via-[#3b82f6] to-[#6366f1] bg-opacity-90 p-6 rounded-2xl border border-blue-400 relative z-10 backdrop-blur-lg transition-all duration-500 ease-in-out"
           >
             <Textarea
               value={input}
@@ -77,7 +77,7 @@ export default function ChatlyHome() {
               }}
               rows={5}
               placeholder="Ask away!"
-              className="bg-transparent text-white border border-white/40 placeholder-white/70 focus:ring-2 focus:ring-white focus:outline-none p-3 rounded-md"
+              className="bg-white/10 text-white border border-white/40 placeholder:text-white/90 focus:ring-2 focus:ring-white focus:outline-none p-3 rounded-md transition-all duration-300"
             />
 
             {error && (
@@ -100,7 +100,7 @@ export default function ChatlyHome() {
 
           {/* Output Summary */}
           {summary && (
-            <Card className="bg-neutral-100 dark:bg-neutral-900 text-left border border-neutral-300 dark:border-neutral-700 shadow-lg">
+            <Card className="bg-neutral-100 dark:bg-neutral-900 text-left border border-neutral-300 dark:border-neutral-700 shadow-lg transition-all duration-500">
               <CardContent className="p-6 space-y-2">
                 <h2 className="text-cyan-400 text-xl font-bold">Answer:</h2>
                 <p className="whitespace-pre-line">{summary}</p>
@@ -121,16 +121,16 @@ export default function ChatlyHome() {
         }
 
         .glow-box {
-          box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); /* blue-500 */
+          box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
           animation: glowPulse 3s ease-in-out infinite;
         }
 
         @keyframes glowPulse {
           0%, 100% {
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
           }
           50% {
-            box-shadow: 0 0 45px rgba(99, 102, 241, 0.8); /* indigo-500 */
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.7);
           }
         }
       `}</style>
