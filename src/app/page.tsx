@@ -81,7 +81,7 @@ export default function ChatlyHome() {
                 setError('');
               }}
               rows={5}
-              placeholder="Paste blog URL or ask something..."
+              placeholder="Ask away!"
               className="bg-transparent text-white border border-white/40 placeholder-white/70 focus:ring-2 focus:ring-white focus:outline-none p-3 rounded-md"
             />
 
@@ -97,9 +97,9 @@ export default function ChatlyHome() {
               {loading ? (
                 <div className="flex items-center justify-center gap-2">
                   <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  Summarizing...
+                  loading...
                 </div>
-              ) : 'Summarise'}
+              ) : 'Done'}
             </Button>
           </form>
 
