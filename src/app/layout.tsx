@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Blog Summarizer',
-  description: 'Summarize articles using AI and n8n automation',
+  title: 'Ai',
+  description: 'Answer questions using AI and n8n automation',
 };
 
 export default function RootLayout({
