@@ -87,7 +87,7 @@ export default function ChatlyHome() {
             <Button
               type="submit"
               disabled={loading || (!isURL && input.trim().length < MIN_LENGTH)}
-              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-md transition-all duration-300 disabled:opacity-60 shadow-md"
+              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-md transition-all duration-300 disabled:opacity-60 shadow-md cursor-pointer"
             >
               {loading ? (
                 <div className="flex items-center justify-center gap-2">
