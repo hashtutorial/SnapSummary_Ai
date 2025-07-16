@@ -1,6 +1,3 @@
-
-
-
 'use client';
 import { useState } from 'react';
 import { Textarea } from "@/components/ui/textarea";
@@ -8,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Sun, Moon } from "lucide-react";
 
-export default function BlogSummarizer() {
+export default function ChatlyHome() {
   const [input, setInput] = useState('');
   const [summary, setSummary] = useState('');
   const [loading, setLoading] = useState(false);
@@ -48,9 +45,10 @@ export default function BlogSummarizer() {
 
   return (
     <main className={`${theme === 'dark' ? 'dark' : ''}`}>
-      <div className="relative min-h-screen bg-white text-black dark:bg-[#0D0D0D] dark:text-white flex items-center justify-center px-4 py-10 overflow-hidden transition-colors">
+      <div className="relative min-h-screen bg-white text-black dark:bg-[#0D0D0D] dark:text-white flex items-center justify-center px-4 py-10 transition-colors">
+        {/* Theme Toggle */}
         <div className="absolute top-4 right-4">
-                 <Button
+          <Button
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -65,41 +63,51 @@ export default function BlogSummarizer() {
           </Button>
         </div>
 
-        <div className="max-w-2xl w-full text-center space-y-8 z-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-violet-400 via-pink-400 to-blue-400 bg-clip-text text-transparent animate-text-glow">
-            Snap<span className="text-violet-400">Summary</span>
+        <div className="max-w-2xl w-full text-center space-y-10 z-10 px-2 sm:px-4">
+          <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent animate-text-glow">
+            Cha<span className="text-cyan-400">tly</span>
           </h1>
-          <p>Digest blogs fast—just paste the text or URL and get a summary instantly.</p>
+          <p className="text-lg text-neutral-500 dark:text-neutral-400">Your AI assistant for quick answers and blog summaries.</p>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          {/* Glowing Gradient Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="glow-box flex flex-col gap-4 bg-gradient-to-br from-[#06b6d4] via-[#3b82f6] to-[#6366f1] p-6 rounded-2xl border border-blue-400 relative z-10 backdrop-blur-md"
+          >
             <Textarea
               value={input}
               onChange={(e) => {
                 setInput(e.target.value);
                 setError('');
               }}
-              rows={6}
-              placeholder="Paste blog text or enter a public blog URL (Minimum 100 characters for blog text)"
-              className="bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-black dark:text-white"
+              rows={5}
+              placeholder="Paste blog URL or ask something..."
+              className="bg-transparent text-white border border-white/40 placeholder-white/70 focus:ring-2 focus:ring-white focus:outline-none p-3 rounded-md"
             />
 
             {error && (
-              <p className="text-sm text-red-500 dark:text-red-400 text-left px-1">{error}</p>
+              <p className="text-sm text-red-200 text-left px-1">{error}</p>
             )}
 
             <Button
               type="submit"
               disabled={loading || (!isURL && input.trim().length < MIN_LENGTH)}
-              className="w-full bg-violet-700 hover:bg-violet-500 cursor-pointer disabled:opacity-60"
+              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-md transition-all duration-300 disabled:opacity-60 shadow-md"
             >
-              {loading ? 'Loading...' : 'Summarize Now'}
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  Summarizing...
+                </div>
+              ) : 'Summarise'}
             </Button>
           </form>
 
+          {/* Output Summary */}
           {summary && (
             <Card className="bg-neutral-100 dark:bg-neutral-900 text-left border border-neutral-300 dark:border-neutral-700 shadow-lg">
               <CardContent className="p-6 space-y-2">
-                <h2 className="text-violet-400 text-xl font-bold">Summary:</h2>
+                <h2 className="text-cyan-400 text-xl font-bold">Answer:</h2>
                 <p className="whitespace-pre-line">{summary}</p>
               </CardContent>
             </Card>
@@ -112,8 +120,23 @@ export default function BlogSummarizer() {
           0%, 100% { filter: brightness(1); }
           50% { filter: brightness(1.3); }
         }
+
         .animate-text-glow {
           animation: text-glow 4s ease-in-out infinite;
+        }
+
+        .glow-box {
+          box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); /* blue-500 */
+          animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+          0%, 100% {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+          }
+          50% {
+            box-shadow: 0 0 45px rgba(99, 102, 241, 0.8); /* indigo-500 */
+          }
         }
       `}</style>
     </main>
