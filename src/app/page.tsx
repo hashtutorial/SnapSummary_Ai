@@ -62,7 +62,7 @@ export default function ChatlyHome() {
           <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent animate-text-glow">
             Cha<span className="text-cyan-400">tly</span>
           </h1>
-          <p className="text-lg text-neutral-500 dark:text-neutral-400">Your AI assistant for quick answers and blog summaries.</p>
+          <p className="text-lg text-neutral-500 dark:text-neutral-400">Your AI assistant for quick answers and solutions.</p>
 
           {/* Chatbox Form */}
           <form
