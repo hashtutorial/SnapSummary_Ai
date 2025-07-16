@@ -19,11 +19,6 @@ export default function ChatlyHome() {
     e.preventDefault();
     setError('');
 
-    if (!isURL && input.trim().length < MIN_LENGTH) {
-      setError(`Please enter at least ${MIN_LENGTH} characters or a valid blog URL.`);
-      return;
-    }
-
     setLoading(true);
 
     try {
@@ -36,7 +31,7 @@ export default function ChatlyHome() {
       const data = await response.json();
       setSummary(data.summary);
     } catch (error) {
-      console.error('Error summarizing blog:', error);
+      console.error('Error finding answer:', error);
       setSummary('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
